@@ -1,6 +1,6 @@
 ﻿namespace ExchangeService.Enums
 {
-    public enum Export
+    public enum ExportType
     {
         Csv = 0,
         Xml = 1

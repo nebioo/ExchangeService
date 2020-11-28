@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 using ExchangeService.Enums;
+using ExchangeService.Export;
 using ExchangeService.Models;
 
-namespace ExchangeService.Services
+namespace ExchangeService
 {
     public class ExchangeService
     {
@@ -95,6 +95,11 @@ namespace ExchangeService.Services
             }
         }
 
-        public string Export
+        public void Export(ExportType export)
+        {
+            Exporter exporter = new Exporter();
+            IExportFactory exportFactory = exporter.ExporterExportFactory(export);
+
+        }
     }
 }

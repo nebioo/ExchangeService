@@ -1,10 +1,8 @@
-using ExchangeService.Services;
-using System;
 using ExchangeService.Enums;
 using ExchangeService.Models;
 using Xunit;
 
-namespace ExchangeService.Services.Tests
+namespace ExchangeServiceTest
 {
     public class ExchangeServiceTests
     {
@@ -13,7 +11,7 @@ namespace ExchangeService.Services.Tests
         {
             // Arrange
             var response = new Response();
-            var service = new Services.ExchangeService();
+            var service = new ExchangeService.ExchangeService();
 
             // Act
             var result = service.GetExchangeRates();
@@ -26,7 +24,7 @@ namespace ExchangeService.Services.Tests
         public void GetExchangeRate_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var service = new Services.ExchangeService();
+            var service = new ExchangeService.ExchangeService();
             string currencyCode = "USD";
 
 
@@ -41,7 +39,7 @@ namespace ExchangeService.Services.Tests
         [Fact()]
         public void SortExchangeRatesAscTest()
         {
-            var service = new Services.ExchangeService();
+            var service = new ExchangeService.ExchangeService();
 
             var result = service.SortExchangeRatesAsc(Sort.Asc, Forex.Buying);
             if (result[0].ForexBuying < result[1].ForexBuying)
@@ -58,7 +56,7 @@ namespace ExchangeService.Services.Tests
         [Fact()]
         public void SortExchangeRatesDescTest()
         {
-            var service = new Services.ExchangeService();
+            var service = new ExchangeService.ExchangeService();
 
             var result = service.SortExchangeRatesDesc(Sort.Desc, Forex.Selling);
             if (result[0].ForexSelling > result[1].ForexSelling)

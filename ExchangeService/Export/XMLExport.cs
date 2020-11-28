@@ -1,10 +1,22 @@
-﻿namespace ExchangeService.Export
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Xml.Serialization;
+using CsvHelper;
+using ExchangeService.Models;
+
+namespace ExchangeService.Export
 {
-    public class XmlExport : IExport
+    public class XmlExport : IExportFactory
     {
-        public void Exporter()
+        public void Export(List<Currency> currencies)
         {
-            throw new System.NotImplementedException();
+            var xmlWriter = new XmlSerializer(typeof(List<Currency>));
+
+            FileStream file = File.Create("./export.xml");
+            xmlWriter.Serialize(file, currencies);
+
+            file.Close();
         }
     }
 }
