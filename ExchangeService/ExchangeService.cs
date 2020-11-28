@@ -8,7 +8,7 @@ using ExchangeService.Models;
 
 namespace ExchangeService.Services
 {
-    public class ExchangeService : IExchangeService
+    public class ExchangeService
     {
         private const string Url = "https://www.tcmb.gov.tr/kurlar/today.xml";
 
@@ -60,12 +60,14 @@ namespace ExchangeService.Services
             if (forex == Forex.Buying)
             {
                 var res = exchangeRates.Currencies
+                    .Where(x => x.ForexBuying != null)
                     .OrderBy(t => t.ForexBuying).ToList();
                 return res;
             }
             else
             {
                 var res = exchangeRates.Currencies
+                    .Where(x => x.ForexSelling != null)
                     .OrderBy(t => t.ForexSelling).ToList();
                 return res;
             }
@@ -80,12 +82,14 @@ namespace ExchangeService.Services
             if (forex == Forex.Buying)
             {
                 var res = exchangeRates.Currencies
+                    .Where(x => x.ForexBuying != null)
                     .OrderByDescending(t => t.ForexBuying).ToList();
                 return res;
             }
             else
             {
                 var res = exchangeRates.Currencies
+                    .Where(x => x.ForexSelling != null)
                     .OrderByDescending(t => t.ForexSelling).ToList();
                 return res;
             }
