@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeService", "Exchange
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeServiceTest", "ExchangeServiceTest\ExchangeServiceTest.csproj", "{602026FE-01BB-4AD9-88AD-3EFCA25B14F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeService.API", "ExchangeService.API\ExchangeService.API.csproj", "{A2685AF5-51ED-477B-AC0A-D2BBC0BE6DD8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{602026FE-01BB-4AD9-88AD-3EFCA25B14F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{602026FE-01BB-4AD9-88AD-3EFCA25B14F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{602026FE-01BB-4AD9-88AD-3EFCA25B14F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2685AF5-51ED-477B-AC0A-D2BBC0BE6DD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2685AF5-51ED-477B-AC0A-D2BBC0BE6DD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2685AF5-51ED-477B-AC0A-D2BBC0BE6DD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2685AF5-51ED-477B-AC0A-D2BBC0BE6DD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
