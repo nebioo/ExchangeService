@@ -2,7 +2,7 @@
 
 namespace ExchangeService.Export
 {
-    public class CSVExport : IExport
+    public class CsvExport : IExport
     {
         public void Exporter()
         {

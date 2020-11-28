@@ -1,6 +1,6 @@
 ﻿namespace ExchangeService.Export
 {
-    public class XMLExport : IExport
+    public class XmlExport : IExport
     {
         public void Exporter()
         {

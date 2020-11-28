@@ -94,5 +94,7 @@ namespace ExchangeService.Services
                 return res;
             }
         }
+
+        public string Export
     }
 }
