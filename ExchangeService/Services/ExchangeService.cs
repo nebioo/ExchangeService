@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
+using ExchangeService.Enums;
 using ExchangeService.Models;
 
 namespace ExchangeService.Services
@@ -50,6 +51,44 @@ namespace ExchangeService.Services
 
             return res;
 
+        }
+
+        public List<Currency> SortExchangeRatesAsc(Sort sort, Forex forex)
+        {
+            var exchangeRates = GetExchangeRates();
+
+            if (forex == Forex.Buying)
+            {
+                var res = exchangeRates.Currencies
+                    .OrderBy(t => t.ForexBuying).ToList();
+                return res;
+            }
+            else
+            {
+                var res = exchangeRates.Currencies
+                    .OrderBy(t => t.ForexSelling).ToList();
+                return res;
+            }
+
+            
+        }
+
+        public List<Currency> SortExchangeRatesDesc(Sort sort, Forex forex)
+        {
+            var exchangeRates = GetExchangeRates();
+
+            if (forex == Forex.Buying)
+            {
+                var res = exchangeRates.Currencies
+                    .OrderByDescending(t => t.ForexBuying).ToList();
+                return res;
+            }
+            else
+            {
+                var res = exchangeRates.Currencies
+                    .OrderByDescending(t => t.ForexSelling).ToList();
+                return res;
+            }
         }
     }
 }

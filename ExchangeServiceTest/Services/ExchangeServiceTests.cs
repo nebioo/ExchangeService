@@ -1,9 +1,10 @@
 using ExchangeService.Services;
 using System;
+using ExchangeService.Enums;
 using ExchangeService.Models;
 using Xunit;
 
-namespace ExchangeServiceTest.Services
+namespace ExchangeService.Services.Tests
 {
     public class ExchangeServiceTests
     {
@@ -11,8 +12,8 @@ namespace ExchangeServiceTest.Services
         public void GetExchangeRates_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var response = new Response(); 
-            var service = new ExchangeService.Services.ExchangeService();
+            var response = new Response();
+            var service = new Services.ExchangeService();
 
             // Act
             var result = service.GetExchangeRates();
@@ -25,16 +26,49 @@ namespace ExchangeServiceTest.Services
         public void GetExchangeRate_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var service = new ExchangeService.Services.ExchangeService();
+            var service = new Services.ExchangeService();
             string currencyCode = "USD";
-            
+
 
             // Act
             var result = service.GetExchangeRate(
                 currencyCode);
 
             // Assert
-            Assert.Equal(result.CurrencyCode , currencyCode);
+            Assert.Equal(result.CurrencyCode, currencyCode);
+        }
+
+        [Fact()]
+        public void SortExchangeRatesAscTest()
+        {
+            var service = new Services.ExchangeService();
+
+            var result = service.SortExchangeRatesAsc(Sort.Asc, Forex.Buying);
+            if (result[0].ForexBuying < result[1].ForexBuying)
+            {
+                Assert.True(true);
+            }
+            else
+            {
+                Assert.True(false);
+            }
+
+        }
+
+        [Fact()]
+        public void SortExchangeRatesDescTest()
+        {
+            var service = new Services.ExchangeService();
+
+            var result = service.SortExchangeRatesDesc(Sort.Desc, Forex.Selling);
+            if (result[0].ForexSelling > result[1].ForexSelling)
+            {
+                Assert.True(true);
+            }
+            else
+            {
+                Assert.True(false);
+            }
         }
     }
 }
