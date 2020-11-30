@@ -95,11 +95,18 @@ namespace ExchangeService
             }
         }
 
-        public void Export(ExportType export)
+        public bool Export(ExportType export)
         {
             Exporter exporter = new Exporter();
-            IExportFactory exportFactory = exporter.ExporterExportFactory(export);
+            var exportFactory = exporter.ExporterExportFactory(export);
 
+
+            if (exportFactory)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

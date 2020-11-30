@@ -1,3 +1,4 @@
+using ExchangeService;
 using ExchangeService.Enums;
 using ExchangeService.Models;
 using Xunit;
@@ -6,6 +7,23 @@ namespace ExchangeServiceTest
 {
     public class ExchangeServiceTests
     {
+
+        [Fact()]
+        public void ExportTest()
+        {
+            var service = new ExchangeService.ExchangeService();
+            var result = service.Export(ExportType.Csv);
+            if (result)
+            {
+                Assert.True(true);
+            }
+            else
+            {
+                Assert.True(false);
+            }
+            
+
+        }
         [Fact]
         public void GetExchangeRates_StateUnderTest_ExpectedBehavior()
         {

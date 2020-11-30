@@ -7,26 +7,35 @@ namespace ExchangeService.Export
 {
     public class Exporter
     {
-        public IExportFactory ExporterExportFactory(ExportType export)
+        public bool ExporterExportFactory(ExportType export)
         {
-            var exchange = new ExchangeService();
-            var rates =exchange.GetExchangeRates();
-            IExportFactory exportFactory = null;
-
-            switch (export)
+            try
             {
-                case ExportType.Csv:
-                    exportFactory =  new CsvExport();
-                    exportFactory.Export(rates.Currencies);
-                    break;
-                case ExportType.Xml:
-                    exportFactory = new XmlExport();
-                    exportFactory.Export(rates.Currencies);
-                    break;
+                var exchange = new ExchangeService();
+                var rates = exchange.GetExchangeRates();
+                IExportFactory exportFactory = null;
 
+                switch (export)
+                {
+                    case ExportType.Csv:
+                        exportFactory = new CsvExport();
+                        var csvResult = exportFactory.Export(rates.Currencies);
+                        return csvResult;
+                    case ExportType.Xml:
+                        exportFactory = new XmlExport();
+                        var xmlResult = exportFactory.Export(rates.Currencies);
+                        return xmlResult;
+                }
+
+                return false;
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            
 
-            return exportFactory;
         }
     }
 }

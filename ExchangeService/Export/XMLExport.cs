@@ -9,14 +9,26 @@ namespace ExchangeService.Export
 {
     public class XmlExport : IExportFactory
     {
-        public void Export(List<Currency> currencies)
+        public bool Export(List<Currency> currencies)
         {
-            var xmlWriter = new XmlSerializer(typeof(List<Currency>));
+            try
+            {
+                var xmlWriter = new XmlSerializer(typeof(List<Currency>));
 
-            FileStream file = File.Create("./export.xml");
-            xmlWriter.Serialize(file, currencies);
+                FileStream file = File.Create("./export.xml");
+                xmlWriter.Serialize(file, currencies);
 
-            file.Close();
+                file.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+            
+
         }
     }
 }

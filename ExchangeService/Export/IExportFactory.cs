@@ -6,6 +6,6 @@ namespace ExchangeService.Export
 {
     public interface IExportFactory
     {
-        public void Export(List<Currency> currencies);
+        public bool Export(List<Currency> currencies);
     }
 }
