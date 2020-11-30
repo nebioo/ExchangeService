@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
-using CsvHelper;
 using ExchangeService.Models;
 
 namespace ExchangeService.Export

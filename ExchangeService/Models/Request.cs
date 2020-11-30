@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ExchangeService.Models
+﻿namespace ExchangeService.Models
 {
     public class Request
     {

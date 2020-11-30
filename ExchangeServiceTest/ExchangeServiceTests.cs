@@ -1,48 +1,49 @@
-using ExchangeService;
 using ExchangeService.Enums;
 using ExchangeService.Models;
 using Xunit;
 
-namespace ExchangeServiceTest
+namespace ExchangeService.Tests
 {
     public class ExchangeServiceTests
     {
+ 
 
         [Fact()]
-        public void ExportTest()
+        public void ExportCsvTest()
         {
-            var service = new ExchangeService.ExchangeService();
+            var service = new ExchangeService();
             var result = service.Export(ExportType.Csv);
-            if (result)
-            {
-                Assert.True(true);
-            }
-            else
-            {
-                Assert.True(false);
-            }
-            
-
+            Assert.True(result);
         }
+
+        [Fact()]
+        public void ExportXmlTest()
+        {
+            var service = new ExchangeService();
+            var result = service.Export(ExportType.Xml);
+            Assert.True(result);
+        }
+
+
         [Fact]
         public void GetExchangeRates_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
             var response = new Response();
-            var service = new ExchangeService.ExchangeService();
+            var service = new ExchangeService();
 
             // Act
             var result = service.GetExchangeRates();
 
             // Assert
-            Assert.Equal(typeof(Response), response.GetType());
+            Assert.Equal(typeof(Response), result.GetType());
         }
 
         [Fact]
         public void GetExchangeRate_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var service = new ExchangeService.ExchangeService();
+            var service = new ExchangeService();
             string currencyCode = "USD";
 
 
@@ -57,34 +58,19 @@ namespace ExchangeServiceTest
         [Fact()]
         public void SortExchangeRatesAscTest()
         {
-            var service = new ExchangeService.ExchangeService();
+            var service = new ExchangeService();
 
             var result = service.SortExchangeRatesAsc(Sort.Asc, Forex.Buying);
-            if (result[0].ForexBuying < result[1].ForexBuying)
-            {
-                Assert.True(true);
-            }
-            else
-            {
-                Assert.True(false);
-            }
-
+            Assert.True(result[0].ForexBuying < result[1].ForexBuying);
         }
 
         [Fact()]
         public void SortExchangeRatesDescTest()
         {
-            var service = new ExchangeService.ExchangeService();
+            var service = new ExchangeService();
 
             var result = service.SortExchangeRatesDesc(Sort.Desc, Forex.Selling);
-            if (result[0].ForexSelling > result[1].ForexSelling)
-            {
-                Assert.True(true);
-            }
-            else
-            {
-                Assert.True(false);
-            }
+            Assert.True(result[0].ForexSelling > result[1].ForexSelling);
         }
     }
 }

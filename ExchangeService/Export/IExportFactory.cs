@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Text;
-using ExchangeService.Models;
+﻿using ExchangeService.Models;
+using System.Collections.Generic;
 
 namespace ExchangeService.Export
 {
